@@ -30,6 +30,7 @@ internals.run = function () {
     })
     server.method({ name: 'pages', method: require('./methods/Pages'), options: {} })
     server.route({ method: 'GET', path: '/themes/{param*}', handler: { directory: { path: path.resolve(__dirname, '../themes') } } })
+    server.route({ method: 'GET', path: '/api/pages', handler: require('./handlers/ApiPages') })
     server.route({ method: 'GET', path: '/{p*}', handler: require('./handlers/Root') })
     server.start((err) => {
       if (err) {
