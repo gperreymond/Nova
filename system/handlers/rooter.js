@@ -1,6 +1,6 @@
 const path = require('path')
-const Boom = require('boom')
 const fse = require('fs-extra')
+const Boom = require('boom')
 
 const handler = (request, reply) => {
   // get authorize pages to load
