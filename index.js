@@ -1,3 +1,3 @@
-const Server = require('./system/Server')
+const server = require('./system/server')
 
-Server.run()
+server.run()

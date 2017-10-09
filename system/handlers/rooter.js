@@ -4,7 +4,7 @@ const fse = require('fs-extra')
 
 const handler = (request, reply) => {
   // get authorize pages to load
-  request.server.methods.pages(request.path, (error, pages) => {
+  request.server.methods.getPages(request.path, (error, pages) => {
     if (error) return reply(Boom.notFound('Page not found!'))
     // get current page content
     let requestLabel = request.path.substr(1)
