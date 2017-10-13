@@ -10,15 +10,15 @@ const handler = (request, reply) => {
       const stream = fse.createReadStream(path.resolve(__dirname, '../../pages', page.filepath))
       stream.on('data', (chunk) => {
         stream.close()
-        page.data = {}
+        page.metadata = {}
         let data = chunk.toString().split('---')[1].split('\n')
         data.map(param => {
           let props = param.split(':')
           if (props.length === 2) {
             try {
-              page.data[props[0]] = JSON.parse(props[1].trim())
+              page.metadata[props[0]] = JSON.parse(props[1].trim())
             } catch (e) {
-              page.data[props[0]] = props[1].trim()
+              page.metadata[props[0]] = props[1].trim()
             }
           }
         })

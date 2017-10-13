@@ -10,7 +10,7 @@ const method = (route, next) => {
       pages.push({
         number: params[0].substr(1),
         name: params[1],
-        filename: path.basename(file),
+        theme: path.basename(file, '.md'),
         filepath: file
       })
     })
