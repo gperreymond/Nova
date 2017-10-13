@@ -12,3 +12,4 @@ down:
 tests:
 	yarn run test:standard;
 	yarn run test:coverage;
+	yarn run coverage:publish;
