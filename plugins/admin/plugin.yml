@@ -3,4 +3,4 @@ type: router
 rules:
   method: GET
   path: /admin/{p*}
-  handler: './handler'
+  handler: 'handler.js'

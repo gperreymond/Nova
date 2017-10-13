@@ -1,5 +1,7 @@
 const handler = (request, reply) => {
-  reply({deub: true})
+  reply({
+    debug: true
+  })
 }
 
 module.exports = handler

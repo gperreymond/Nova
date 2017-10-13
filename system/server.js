@@ -35,10 +35,15 @@ internals.run = function () {
           layout: 'layout'
         }
       })
-      internals.server.method({ name: 'getPages', method: require('./methods/getPages'), options: {} })
-      internals.server.method({ name: 'getPlugins', method: require('./methods/getPlugins'), options: {} })
+      // methods
+      internals.server.method({ name: 'getPages', method: require('./methods/getPages'), options: {bind: internals.server} })
+      internals.server.method({ name: 'getPlugins', method: require('./methods/getPlugins'), options: {bind: internals.server} })
+      // route: themes
       internals.server.route({ method: 'GET', path: '/themes/{param*}', handler: { directory: { path: path.resolve(__dirname, '../themes') } } })
+      // routes: api
       internals.server.route({ method: 'GET', path: '/api/pages', handler: require('./handlers/api/pages/list') })
+      internals.server.route({ method: 'GET', path: '/api/plugins', handler: require('./handlers/api/plugins/list') })
+      // route: cms
       internals.server.route({
         method: 'GET',
         path: '/{param*}',
@@ -49,13 +54,15 @@ internals.run = function () {
           handler: require('./handlers/rooter')
         }
       })
-      // analyse plugins
-      internals.server.methods.getPlugins((error, result) => {
+      internals.server.start((error) => {
         if (error) return reject(error)
-        internals.server.start((error) => {
-          if (error) return reject(error)
-          resolve()
+        // analyse plugins
+        internals.server.methods.getPlugins(false, (error, result) => {
+          if (error) {
+            console.log(error)
+          }
         })
+        resolve()
       })
     })
   })
