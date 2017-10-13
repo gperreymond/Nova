@@ -1,0 +1,6 @@
+name: "Administration Panels"
+type: router
+rules:
+  method: GET
+  path: /admin/{p*}
+  handler: './handler'

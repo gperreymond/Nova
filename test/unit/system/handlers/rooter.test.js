@@ -5,23 +5,24 @@ const handler = require('../../../../system/handlers/rooter')
 
 const requestHome = {
   path: '/',
-  server: {
-    methods: {
-      getPages: require('../../../../system/methods/getPages')
-    }
-  }
+  pre: {}
 }
 
 const requestNotGoot = {
   path: '/notgood',
-  server: {
-    methods: {
-      getPages: require('../../../../system/methods/getPages')
-    }
-  }
+  pre: {}
 }
 
 describe('[unit] handlers > rooter', () => {
+  beforeEach((done) => {
+    const getPages = require('../../../../system/methods/getPages')
+    getPages((error, result) => {
+      if (error) return done(error)
+      requestHome.pre.pages = result
+      requestNotGoot.pre.pages = result
+      done()
+    })
+  })
   it('should return 404 from /notgood', done => {
     handler(requestNotGoot, (error) => {
       expect(error.isBoom).to.eq(true)

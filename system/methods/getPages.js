@@ -1,8 +1,8 @@
 const path = require('path')
 const glob = require('glob-promise')
 
-const method = (route, next) => {
-  const directoryPages = path.resolve(__dirname, '../../pages')
+const method = (next) => {
+  const directoryPages = path.resolve(__dirname, '../../user/pages')
   let pages = []
   glob(directoryPages + '/**/*.md').then(files => {
     files.map(file => {

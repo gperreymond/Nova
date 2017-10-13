@@ -5,7 +5,7 @@
   "scripts": {
     "start": "NODE_ENV=development node_modules/.bin/nodemon --config nodemon.json index.js",
     "test:standard": "node_modules/.bin/standard --fix server/**/*.js src/**/*.js test/**/*.js | node_modules/.bin/snazzy",
-    "test:coverage": "node_modules/.bin/nyc --reporter=lcov --reporter=text node_modules/.bin/mocha --opts .mocharc",
+    "test:coverage": "NOVA_SERVER_PORT=9090 node_modules/.bin/nyc --reporter=lcov --reporter=text node_modules/.bin/mocha --opts .mocharc",
     "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "repository": {
@@ -31,6 +31,7 @@
     "hapi-react-views": "9.3.0",
     "inert": "4.2.1",
     "lodash": "4.17.4",
+    "nconf": "0.8.5",
     "react": "16.0.0",
     "react-dom": "16.0.0",
     "react-markdown": "2.5.0",
@@ -49,6 +50,7 @@
   },
   "standard": {
     "globals": [
+      "beforeEach",
       "before",
       "after",
       "describe",

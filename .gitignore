@@ -8,4 +8,3 @@ coverage
 *.log
 volumes
 build
-yarn.lock
