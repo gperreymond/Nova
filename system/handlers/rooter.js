@@ -16,7 +16,7 @@ const handler = (request, reply) => {
     stream.close()
     let content = chunk.toString().split('---')
     page.content = content[2] || content[0]
-    reply.view(page.theme + '/index', page)
+    reply.view('themes/' + page.theme + '/index', page)
   })
 }
 

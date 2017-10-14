@@ -1,6 +1,8 @@
 name: "Nova Administration"
-type: router
+description: ""
 rules:
-  method: GET
-  path: /admin/{p*}
-  handler: 'handler.js'
+    -
+      type: route
+      method: GET
+      path: "/admin/{p*}"
+      handler: "handler.js"

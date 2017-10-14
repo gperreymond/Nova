@@ -12,20 +12,15 @@ const method = function (api, next) {
       let plugin = YAML.load(file)
       plugins.push(plugin)
       if (api === false) {
-        switch (plugin.type) {
-          case 'router':
-            if (plugin.rules.length) {
-              _.map(plugin.rules, rule => {
-                rule.handler = require(path.resolve(pluginPath, rule.handler))
-                return this.route(rule)
-              })
-            } else {
-              plugin.rules.handler = require(path.resolve(pluginPath, plugin.rules.handler))
-              this.route(plugin.rules)
-            }
-            break
-          default:
-        }
+        _.map(plugin.rules, rule => {
+          switch (rule.type) {
+            case 'route':
+              delete rule.type
+              rule.handler = require(path.resolve(pluginPath, rule.handler))
+              return this.route(rule)
+            default:
+          }
+        })
       }
     })
     next(null, plugins)

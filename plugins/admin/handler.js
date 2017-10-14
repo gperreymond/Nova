@@ -1,7 +1,5 @@
 const handler = (request, reply) => {
-  reply({
-    debug: true
-  })
+  reply.view('plugins/admin/themes/default/index', {})
 }
 
 module.exports = handler

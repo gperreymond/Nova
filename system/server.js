@@ -37,12 +37,7 @@ internals.initialize = function () {
       if (error) return reject(error)
       internals.server.views({
         engines: { jsx: require('hapi-react-views') },
-        path: path.resolve(__dirname, '../themes'),
-        compileOptions: {
-          spretty: true,
-          layoutPath: path.resolve(__dirname, '../themes'),
-          layout: 'layout'
-        }
+        path: path.resolve(__dirname, '..')
       })
       // methods
       internals.server.method({ name: 'getPages', method: require('./methods/getPages'), options: {bind: internals.server} })
@@ -61,7 +56,7 @@ internals.initialize = function () {
         }
       })
       // load plugins
-      internals.server.methods.getPlugins(false, (error, result) => {
+      internals.server.methods.getPlugins(false, (error) => {
         if (error) return reject(error)
         resolve()
       })
