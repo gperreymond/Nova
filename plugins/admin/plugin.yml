@@ -1,4 +1,4 @@
-name: "Administration Panels"
+name: "Nova Administration"
 type: router
 rules:
   method: GET

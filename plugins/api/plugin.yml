@@ -1,0 +1,11 @@
+name: "Nova API"
+type: router
+rules:
+  -
+    method: GET
+    path: /api/pages
+    handler: 'handlers/pages/list.js'
+  -
+    method: GET
+    path: /api/plugins
+    handler: 'handlers/plugins/list.js'

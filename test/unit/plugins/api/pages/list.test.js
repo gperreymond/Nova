@@ -1,13 +1,13 @@
 const chai = require('chai')
 const expect = chai.expect
 
-const handler = require('../../../../../../system/handlers/api/pages/list')
+const handler = require('../../../../../plugins/api/handlers/pages/list')
 
 const requestSucess = {
   path: '/',
   server: {
     methods: {
-      getPages: require('../../../../../../system/methods/getPages')
+      getPages: require('../../../../../system/methods/getPages')
     }
   }
 }

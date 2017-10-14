@@ -20,7 +20,16 @@ internals.stop = function () {
   internals.server.stop()
 }
 
-internals.run = function () {
+internals.start = function () {
+  return new Promise((resolve, reject) => {
+    internals.server.start((error) => {
+      if (error) return reject(error)
+      resolve()
+    })
+  })
+}
+
+internals.initialize = function () {
   return new Promise((resolve, reject) => {
     internals.server = new Hapi.Server()
     internals.server.connection({ port: config.server.port })
@@ -39,29 +48,21 @@ internals.run = function () {
       internals.server.method({ name: 'getPages', method: require('./methods/getPages'), options: {bind: internals.server} })
       internals.server.method({ name: 'getPlugins', method: require('./methods/getPlugins'), options: {bind: internals.server} })
       // route: themes
-      internals.server.route({ method: 'GET', path: '/themes/{param*}', handler: { directory: { path: path.resolve(__dirname, '../themes') } } })
-      // routes: api
-      internals.server.route({ method: 'GET', path: '/api/pages', handler: require('./handlers/api/pages/list') })
-      internals.server.route({ method: 'GET', path: '/api/plugins', handler: require('./handlers/api/plugins/list') })
+      internals.server.route({ method: 'GET', path: '/themes/{p*}', handler: { directory: { path: path.resolve(__dirname, '../themes') } } })
       // route: cms
       internals.server.route({
         method: 'GET',
-        path: '/{param*}',
+        path: '/{p*}',
         config: {
           pre: [
-            { method: require('./handlers/api/pages/list'), assign: 'pages' }
+            { method: require('../plugins/api/handlers/pages/list'), assign: 'pages' }
           ],
           handler: require('./handlers/rooter')
         }
       })
-      internals.server.start((error) => {
+      // load plugins
+      internals.server.methods.getPlugins(false, (error, result) => {
         if (error) return reject(error)
-        // analyse plugins
-        internals.server.methods.getPlugins(false, (error, result) => {
-          if (error) {
-            console.log(error)
-          }
-        })
         resolve()
       })
     })

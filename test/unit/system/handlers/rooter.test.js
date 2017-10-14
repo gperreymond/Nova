@@ -5,12 +5,16 @@ const handler = require('../../../../system/handlers/rooter')
 
 const requestHome = {
   path: '/',
-  pre: {}
+  pre: {
+    pages: {}
+  }
 }
 
 const requestNotGoot = {
   path: '/notgood',
-  pre: {}
+  pre: {
+    pages: {}
+  }
 }
 
 describe('[unit] handlers > rooter', () => {
@@ -18,7 +22,7 @@ describe('[unit] handlers > rooter', () => {
     const getPages = require('../../../../system/methods/getPages')
     getPages((error, result) => {
       if (error) return done(error)
-      requestHome.pre.pages = result
+      requestHome.pre.pages.dataProvider = result
       requestNotGoot.pre.pages = result
       done()
     })

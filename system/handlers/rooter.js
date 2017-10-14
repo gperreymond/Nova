@@ -4,7 +4,7 @@ const _ = require('lodash')
 const Boom = require('boom')
 
 const handler = (request, reply) => {
-  const pages = request.pre.pages
+  const pages = request.pre.pages.dataProvider
   // get current page content
   let requestName = request.path.substr(1)
   if (requestName === '') requestName = 'home'
