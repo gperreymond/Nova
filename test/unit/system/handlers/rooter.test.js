@@ -37,7 +37,7 @@ describe('[unit] handlers > rooter', () => {
   it('should success return view from /', done => {
     handler(requestHome, {
       view: function (result) {
-        expect(result).to.eq('default/index')
+        expect(result).to.eq('themes/default/index')
         done()
       }
     })
