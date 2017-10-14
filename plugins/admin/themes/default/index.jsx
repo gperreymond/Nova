@@ -3,12 +3,14 @@
 const React = require('react')
 const Reflux = require('reflux')
 
+const Layout = require('../layout.jsx')
+
 class Page extends Reflux.Component {
   render () {
     return (
-      <div>
+      <Layout>
         <h1>NOVA ADMINISTRATION</h1>
-      </div>
+      </Layout>
     )
   }
 }

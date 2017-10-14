@@ -13,7 +13,7 @@ class Layout extends Reflux.Component {
           <title>{this.props.title}</title>
         </head>
         <body>
-          <div id="content" dangerouslySetInnerHTML={{ __html: this.props.children }} />
+          {this.props.children}
         </body>
       </html>
     )

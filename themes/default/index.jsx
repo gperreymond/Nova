@@ -3,15 +3,16 @@
 const React = require('react')
 const Reflux = require('reflux')
 
+const Layout = require('../layout.jsx')
 const ReactMarkdown = require('react-markdown')
 
 class Page extends Reflux.Component {
   render () {
     return (
-      <div>
+      <Layout {...this.props}>
         <ReactMarkdown className="markdown-body" source={this.props.content} />
         <link href="themes/default/css/github-markdown.min.css" type="text/css" rel="stylesheet" />
-      </div>
+      </Layout>
     )
   }
 }
