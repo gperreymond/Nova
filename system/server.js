@@ -53,7 +53,10 @@ internals.initialize = function () {
       // react views
       internals.server.views({
         engines: { jsx: require('hapi-react-views') },
-        path: path.resolve(__dirname, '..')
+        path: path.resolve(__dirname, '..'),
+        compileOptions: {
+          renderMethod: 'renderToString'
+        }
       })
       // methods
       internals.server.method({ name: 'getPages', method: require('./methods/getPages'), options: {bind: internals.server} })

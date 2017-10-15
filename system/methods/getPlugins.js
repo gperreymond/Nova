@@ -17,7 +17,6 @@ const method = function (api, next) {
             case 'route':
               delete rule.type
               rule.handler = require(path.resolve(pluginPath, rule.handler))
-              console.log(rule)
               return this.route(rule)
             default:
           }

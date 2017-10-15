@@ -3,16 +3,14 @@
 import React from 'react'
 import Reflux from 'reflux'
 
-import { Button } from 'semantic-ui-react'
-
-import Layout from './layout.jsx'
+import Layout from './components/Layout.jsx'
+import Application from './components/Application.jsx'
 
 class Page extends Reflux.Component {
   render () {
     return (
       <Layout>
-        <h1>NOVA ADMINISTRATION</h1>
-        <Button>Login</Button>
+        <Application {...this.props} />
       </Layout>
     )
   }

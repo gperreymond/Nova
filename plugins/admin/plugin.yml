@@ -5,9 +5,9 @@ rules:
       type: route
       method: GET
       path: "/admin/assets/{p*}"
-      handler: "handler-assets.js"
+      handler: "handlers/assets.js"
     -
       type: route
       method: GET
       path: "/admin/{p*}"
-      handler: "handler.js"
+      handler: "handlers/views.js"
