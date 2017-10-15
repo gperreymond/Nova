@@ -6,7 +6,9 @@
     "start": "NODE_ENV=development node_modules/.bin/nodemon --config nodemon.json index.js",
     "test:standard": "node_modules/.bin/standard --fix server/**/*.js src/**/*.js test/**/*.js | node_modules/.bin/snazzy",
     "test:coverage": "NOVA_SERVER_PORT=9090 node_modules/.bin/nyc --reporter=lcov --reporter=text node_modules/.bin/mocha --opts .mocharc",
-    "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "plugin-admin:start": "./node_modules/.bin/webpack --watch --colors --config=plugins/admin/webpack.config.js",
+    "plugin-admin:build": "./node_modules/.bin/webpack -p --config=plugins/admin/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -34,22 +36,27 @@
     "inert": "4.2.1",
     "lodash": "4.17.4",
     "nconf": "0.8.5",
+    "prop-types": "15.6.0",
     "react": "16.0.0",
+    "react-cookies": "0.1.0",
     "react-dom": "16.0.0",
     "react-markdown": "2.5.0",
+    "react-router-dom": "4.2.2",
     "reflux": "6.4.1",
     "semantic-ui-react": "0.74.2",
     "vision": "4.1.1",
     "yamljs": "0.3.0"
   },
   "devDependencies": {
+    "babel-loader": "7.1.2",
     "chai": "4.1.2",
     "coveralls": "3.0.0",
     "mocha": "4.0.1",
     "nodemon": "1.12.1",
     "nyc": "11.2.1",
     "snazzy": "7.0.0",
-    "standard": "10.0.3"
+    "standard": "10.0.3",
+    "webpack": "3.7.1"
   },
   "standard": {
     "globals": [
