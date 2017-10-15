@@ -1,15 +1,18 @@
 /* eslint jsx-quotes: ["error", "prefer-double"] */
 
-const React = require('react')
-const Reflux = require('reflux')
+import React from 'react'
+import Reflux from 'reflux'
 
-const Layout = require('../layout.jsx')
+import { Button } from 'semantic-ui-react'
+
+import Layout from './layout.jsx'
 
 class Page extends Reflux.Component {
   render () {
     return (
       <Layout>
         <h1>NOVA ADMINISTRATION</h1>
+        <Button>Login</Button>
       </Layout>
     )
   }

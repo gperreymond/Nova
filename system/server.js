@@ -1,8 +1,10 @@
 const path = require('path')
 const Promise = require('bluebird')
 const Hapi = require('hapi')
+
 const Inert = require('inert')
 const Vision = require('vision')
+const AuthJWT2 = require('hapi-auth-jwt2')
 
 const config = require('../config')
 
@@ -13,7 +15,13 @@ require('babel-core/register')({
 // Declare internals
 
 const internals = {
-  server: false
+  server: false,
+  validateFunc: function (decoded, request, callback) {
+    callback(null, true)
+  },
+  errorFunc: function (errorContext) {
+    return errorContext
+  }
 }
 
 internals.stop = function () {
@@ -33,8 +41,16 @@ internals.initialize = function () {
   return new Promise((resolve, reject) => {
     internals.server = new Hapi.Server()
     internals.server.connection({ port: config.server.port })
-    internals.server.register([Inert, Vision], (error) => {
+    internals.server.register([Inert, Vision, AuthJWT2], (error) => {
       if (error) return reject(error)
+      // jwt
+      internals.server.auth.strategy('jwt', 'jwt', {
+        key: config.server.auth.secret,
+        validateFunc: internals.validateFunc,
+        verifyOptions: { algorithms: [ 'HS256' ] },
+        errorFunc: internals.errorFunc
+      })
+      // react views
       internals.server.views({
         engines: { jsx: require('hapi-react-views') },
         path: path.resolve(__dirname, '..')
