@@ -22,6 +22,9 @@ module.exports = {
         'babel-loader'
       ],
       include: path.resolve(__dirname, 'app')
+    }, {
+      test: /\.css$/,
+      use: [ 'style-loader', 'css-loader' ]
     }]
   }
 }
