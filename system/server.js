@@ -2,6 +2,7 @@ const path = require('path')
 const Promise = require('bluebird')
 const Hapi = require('hapi')
 
+const Nova = require('./nova')
 const Inert = require('inert')
 const Vision = require('vision')
 const AuthJWT2 = require('hapi-auth-jwt2')
@@ -41,7 +42,7 @@ internals.initialize = function () {
   return new Promise((resolve, reject) => {
     internals.server = new Hapi.Server()
     internals.server.connection({ port: config.server.port })
-    internals.server.register([Inert, Vision, AuthJWT2], (error) => {
+    internals.server.register([Inert, Vision, AuthJWT2, Nova], (error) => {
       if (error) return reject(error)
       // jwt
       internals.server.auth.strategy('jwt', 'jwt', {
@@ -63,22 +64,7 @@ internals.initialize = function () {
       internals.server.method({ name: 'getPlugins', method: require('./methods/getPlugins'), options: {bind: internals.server} })
       // route: themes
       internals.server.route({ method: 'GET', path: '/themes/{p*}', handler: { directory: { path: path.resolve(__dirname, '../themes') } } })
-      // route: cms
-      internals.server.route({
-        method: 'GET',
-        path: '/{p*}',
-        config: {
-          pre: [
-            { method: require('../plugins/api/handlers/pages/list'), assign: 'pages' }
-          ],
-          handler: require('./handlers/rooter')
-        }
-      })
-      // load plugins
-      internals.server.methods.getPlugins(false, (error) => {
-        if (error) return reject(error)
-        resolve()
-      })
+      resolve()
     })
   })
 }

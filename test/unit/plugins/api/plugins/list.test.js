@@ -12,8 +12,8 @@ const requestSucess = {
   }
 }
 
-describe('[unit] handlers > api/plugins/list', () => {
-  it('should success loading home from /', done => {
+describe('[unit] plugin api/plugins/list', () => {
+  it('should success', done => {
     handler(requestSucess, (result) => {
       expect(result.type).to.eq('plugins')
       expect(result.count).to.be.a('number')

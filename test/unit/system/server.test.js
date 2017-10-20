@@ -1,12 +1,18 @@
 const server = require('../../../system/server')
 
 describe('[unit] server', () => {
-  it('should start without error', done => {
+  it('should initialize', done => {
     server.initialize().then(() => {
-      return server.start().then(() => {
-        server.stop()
-        done()
-      })
+      done()
     }).catch(done)
+  })
+  it('should start', done => {
+    server.start().then(() => {
+      done()
+    }).catch(done)
+  })
+  it('should stop', done => {
+    server.stop()
+    done()
   })
 })

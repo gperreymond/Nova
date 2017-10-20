@@ -1,0 +1,9 @@
+name: "Nova CMS"
+description: ""
+rules:
+    -
+      type: route
+      method: GET
+      path: "/{p*}"
+      handler: "handler.js"
+      config: "config.js"

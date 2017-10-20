@@ -12,8 +12,8 @@ const requestSucess = {
   }
 }
 
-describe('[unit] handlers > api/pages/list', () => {
-  it('should success loading home from /', done => {
+describe('[unit] plugin api/pages/list', () => {
+  it('should success', done => {
     handler(requestSucess, (result) => {
       expect(result.type).to.eq('pages')
       expect(result.count).to.be.a('number')

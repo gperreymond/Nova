@@ -3,8 +3,8 @@ const expect = chai.expect
 
 const method = require('../../../../system/methods/getPages')
 
-describe('[unit] methods > getPages', () => {
-  it('should success loading home from /', done => {
+describe('[unit] methods getPages', () => {
+  it('should success', done => {
     method((error, result) => {
       if (error) return done(error)
       let page = result[0]
