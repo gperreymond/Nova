@@ -16,3 +16,10 @@ dependencies:
 test:
   override:
     - make tests
+
+deployment:
+  production:
+    branch: master
+    owner: gperreymond
+    commands:
+      - yarn run plugin-admin:build;

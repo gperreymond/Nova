@@ -1,3 +1,5 @@
+const debug = require('debug')('nova:server:nova')
+
 const path = require('path')
 const glob = require('glob-promise')
 const YAML = require('yamljs')
@@ -5,7 +7,8 @@ const _ = require('lodash')
 
 const NovaPlugin = {
   register: function (server, options, next) {
-    const directoryPages = path.resolve(__dirname, '../../plugins')
+    const directoryPages = path.resolve(__dirname, '../plugins')
+    debug('directoryPages=%s', directoryPages)
     let plugins = []
     glob(directoryPages + '/**/plugin.yml').then(files => {
       files.map(file => {
@@ -18,7 +21,8 @@ const NovaPlugin = {
               delete rule.type
               if (rule.config) rule.config = require(path.resolve(pluginPath, rule.config))
               if (rule.handler) rule.handler = require(path.resolve(pluginPath, rule.handler))
-              return this.route(rule)
+              debug('add new rule: %o', rule)
+              return server.route(rule)
             default:
           }
         })

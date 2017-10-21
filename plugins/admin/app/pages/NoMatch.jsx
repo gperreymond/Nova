@@ -1,21 +1,20 @@
 /* eslint jsx-quotes: ["error", "prefer-double"] */
 
-// react
 import React from 'react'
 
-// semantic
-import { Container, Segment, Header, Icon } from 'semantic-ui-react'
+import { Button, Group } from '../components'
 
 const NoMatch = ({ location }) => (
-  <Container fluid>
-    <Segment basic padded>
-      <Header as="h1" color="red" icon>
-        <Icon name="help circle" size="huge" />
-        404
-        <Header.Subheader>Oups, vous vous êtes égaré dans la dimension noire !</Header.Subheader>
-      </Header>
-    </Segment>
-  </Container>
+  <Group className="application" width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+    <Group className="content small" orientation="vertical" height="auto">
+      <img alt="logo abibao" className="logo" src="/admin/assets/images/abibao-logo-gris-jaune.png" style={{marginLeft: '-5px'}} />
+      <p>&nbsp;</p>
+      <h2 className="dark-red">Erreur 404</h2>
+      <h4>Vous vous êtes égaré dans la dimension noire.</h4>
+      <p>&nbsp;</p>
+      <Button href="/admin" label="Retour sur terre" className="button large full dark-red" />
+    </Group>
+  </Group>
 )
 
 export default NoMatch

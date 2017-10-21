@@ -1,8 +1,8 @@
 const path = require('path')
 
 const webpack = require('webpack')
-const Dotenv = require('dotenv-webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: path.join(__dirname, './app/index.jsx'),
@@ -35,12 +35,12 @@ module.exports = {
   },
   plugins: [
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development',
-      DEBUG: true
+      NODE_ENV: 'production',
+      DEBUG: false
     }),
-    new Dotenv({
-      path: path.join(__dirname, '.env')
-    }),
-    new ExtractTextPlugin('../css/bundle.min.css')
+    new ExtractTextPlugin('../css/bundle.min.css'),
+    new UglifyJSPlugin({
+      parallel: true
+    })
   ]
 }

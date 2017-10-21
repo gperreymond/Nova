@@ -1,3 +1,5 @@
+const debug = require('debug')('nova:server')
+
 const path = require('path')
 const Promise = require('bluebird')
 const Hapi = require('hapi')
@@ -31,6 +33,7 @@ internals.stop = function () {
 
 internals.start = function () {
   return new Promise((resolve, reject) => {
+    debug('start')
     internals.server.start((error) => {
       if (error) return reject(error)
       resolve()
@@ -40,6 +43,7 @@ internals.start = function () {
 
 internals.initialize = function () {
   return new Promise((resolve, reject) => {
+    debug('initialize')
     internals.server = new Hapi.Server()
     internals.server.connection({ port: config.server.port })
     internals.server.register([Inert, Vision, AuthJWT2, Nova], (error) => {
