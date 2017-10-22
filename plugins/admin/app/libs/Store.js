@@ -1,32 +1,27 @@
 import Reflux from 'reflux'
-import cookie from 'react-cookies'
 
 import Actions from './Actions'
+import Handlers from './Handlers'
+
+import Debug from 'debug'
+const debug = Debug('nova:admin:store')
 
 class Store extends Reflux.Store {
   constructor () {
+    debug('constructor')
     super()
     this.state = {
-      generalError: false,
-      rememberMe: false,
-      user: false,
-      initialized: false,
-      loader: {
-        title: 'Intialisation en cours...',
-        message: 'Ouverture des caisses d’approvisionnement.'
+      stages: {
+        STATE_PAGE_LOGIN: 'STATE_PAGE_LOGIN',
+        STATE_PAGE_LOGIN_LOADING: 'STATE_PAGE_LOGIN_LOADING'
       },
-      campaigns: {
-        open: false,
-        dataProvider: []
-      }
+      currentStage: false
     }
     this.listenables = [Actions]
+    this.handlers = new Handlers()
   }
-  onCheckCookie () {
-    cookie.save('rememberMe', 'TOKEN JWT2', { path: '/' })
-    const rememberMe = cookie.load('rememberMe', { path: '/' })
-    console.log('rememberMe', rememberMe)
-  }
+  onCheckCookie () { this.handlers.onCheckCookie(this) }
+  onAuthGoogle () { this.handlers.onAuthGoogle(this) }
 }
 
 export default Store

@@ -1,6 +1,5 @@
 const path = require('path')
 
-const webpack = require('webpack')
 const Dotenv = require('dotenv-webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
@@ -34,10 +33,6 @@ module.exports = {
     }]
   },
   plugins: [
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development',
-      DEBUG: true
-    }),
     new Dotenv({
       path: path.join(__dirname, '.env')
     }),

@@ -11,3 +11,16 @@ rules:
       method: GET
       path: "/admin/{p*}"
       handler: "server/views.js"
+    -
+      type: route
+      method:
+        - GET
+        - POST
+      path: "/admin/login"
+      handler: "server/login.js"
+      config: "server/login-config.js"
+    -
+      type: route
+      method: POST
+      path: "/admin/auth/control"
+      handler: "server/auth-control.js"

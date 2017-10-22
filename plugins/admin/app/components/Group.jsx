@@ -154,7 +154,6 @@ class Group extends Component {
 
 Group.propTypes = {
   id: PropTypes.string,
-  includeIn: PropTypes.string,
   width: PropTypes.string,
   height: PropTypes.string,
   className: PropTypes.string,

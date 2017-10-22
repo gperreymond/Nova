@@ -5,6 +5,7 @@ const Promise = require('bluebird')
 const Hapi = require('hapi')
 
 const Nova = require('./nova')
+const Bell = require('bell')
 const Inert = require('inert')
 const Vision = require('vision')
 const AuthJWT2 = require('hapi-auth-jwt2')
@@ -45,12 +46,22 @@ internals.initialize = function () {
   return new Promise((resolve, reject) => {
     debug('initialize')
     internals.server = new Hapi.Server()
+    // plugins
     internals.server.connection({ port: config.server.port })
-    internals.server.register([Inert, Vision, AuthJWT2, Nova], (error) => {
+    internals.server.register([Inert, Vision, AuthJWT2, Bell], (error) => {
       if (error) return reject(error)
-      // jwt
+      // auth google
+      internals.server.auth.strategy('google', 'bell', {
+        provider: 'google',
+        password: config.server.auth.google.password,
+        isSecure: false,
+        clientId: config.server.auth.google.clientId,
+        clientSecret: config.server.auth.google.clientSecret,
+        location: config.server.auth.google.location
+      })
+      // auth jwt2
       internals.server.auth.strategy('jwt', 'jwt', {
-        key: config.server.auth.secret,
+        key: config.server.auth.jwt2.secret,
         validateFunc: internals.validateFunc,
         verifyOptions: { algorithms: [ 'HS256' ] },
         errorFunc: internals.errorFunc
@@ -68,7 +79,10 @@ internals.initialize = function () {
       internals.server.method({ name: 'getPlugins', method: require('./methods/getPlugins'), options: {bind: internals.server} })
       // route: themes
       internals.server.route({ method: 'GET', path: '/themes/{p*}', handler: { directory: { path: path.resolve(__dirname, '../themes') } } })
-      resolve()
+      internals.server.register([Nova], (error) => {
+        if (error) return reject(error)
+        resolve()
+      })
     })
   })
 }
