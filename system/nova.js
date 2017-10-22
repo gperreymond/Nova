@@ -1,4 +1,4 @@
-const debug = require('debug')('nova:server:nova')
+const debug = require('debug')('nova:server:system')
 
 const path = require('path')
 const glob = require('glob-promise')

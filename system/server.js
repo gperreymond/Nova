@@ -10,21 +10,42 @@ const Inert = require('inert')
 const Vision = require('vision')
 const AuthJWT2 = require('hapi-auth-jwt2')
 
-const config = require('../config')
+const Catbox = require('catbox')
+const CatboxMemory = require('catbox-memory')
 
-require('babel-core/register')({
-  plugins: ['transform-react-jsx']
-})
+const config = require('../config')
 
 // Declare internals
 
 const internals = {
   server: false,
+  cache: false,
   validateFunc: function (decoded, request, callback) {
     callback(null, true)
   },
   errorFunc: function (errorContext) {
     return errorContext
+  }
+}
+
+internals.startCache = async function () {
+  if (internals.server === false) return Promise.reject(new Error('Server not started'))
+  if (config.cache.type === 'memory') {
+    internals.cache = new Catbox.Client(CatboxMemory)
+  }
+  await internals.cache.start()
+  internals.server.app.cache = internals.cache
+  return {
+    isReady: internals.cache.isReady(),
+    result: internals.cache
+  }
+}
+
+internals.stopCache = async function () {
+  await internals.cache.stop()
+  internals.cache = false
+  return {
+    isReady: false
   }
 }
 

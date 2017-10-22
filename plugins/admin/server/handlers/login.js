@@ -1,8 +1,8 @@
 const uuid = require('uuid')
 
-const config = require('../../../config')
+const config = require('../../../../config')
 
-const handler = (request, reply) => {
+const handler = async function (request, reply) {
   if (!request.auth.isAuthenticated) {
     return reply('Authentication failed due to: ' + request.auth.error.message)
   }
@@ -15,8 +15,11 @@ const handler = (request, reply) => {
     provider: request.auth.credentials.provider,
     email: request.auth.credentials.profile.email
   }
+  const ttl = 24 * 60 * 60 * 1000
   const userURN = 'urn:plugin:admin:user:' + account.id
-  reply().state('rememberMePluginAdmin', userURN, { ttl: 24 * 60 * 60 * 1000, isSecure: false, isHttpOnly: false }).redirect('/admin')
+  const key = { id: userURN, segment: 'account' }
+  await request.server.app.cache.set(key, account, ttl)
+  reply().state('rememberMePluginAdmin', userURN, { ttl, isSecure: false, isHttpOnly: false }).redirect('/admin')
 }
 
 module.exports = handler

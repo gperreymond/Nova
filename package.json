@@ -28,6 +28,8 @@
     "babel-preset-env": "1.6.1",
     "bell": "8.8.0",
     "bluebird": "3.5.1",
+    "catbox": "9.0.0",
+    "catbox-memory": "3.0.0",
     "client-request": "2.3.0",
     "debug": "3.1.0",
     "fs-extra": "4.0.2",

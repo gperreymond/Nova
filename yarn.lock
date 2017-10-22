@@ -924,6 +924,12 @@ boom@5.x.x, boom@^5.1.0, boom@^5.2.0:
   dependencies:
     hoek "4.x.x"
 
+boom@6.x.x:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/boom/-/boom-6.0.0.tgz#9b36c52a12afab3f0e55536131b7fd5021aad0cc"
+  dependencies:
+    hoek "5.x.x"
+
 boxen@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/boxen/-/boxen-0.3.1.tgz#a7d898243ae622f7abb6bb604d740a76c6a5461b"
@@ -1167,11 +1173,25 @@ caseless@~0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
 
+catbox-memory@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/catbox-memory/-/catbox-memory-3.0.0.tgz#29d722f454fe5a909f8b6aad32cedadeb2b6d19b"
+  dependencies:
+    hoek "5.x.x"
+
 catbox-memory@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/catbox-memory/-/catbox-memory-2.0.4.tgz#433e255902caf54233d1286429c8f4df14e822d5"
   dependencies:
     hoek "4.x.x"
+
+catbox@9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/catbox/-/catbox-9.0.0.tgz#82fd22c450384d261876a7d746a465664eecd0b9"
+  dependencies:
+    boom "6.x.x"
+    hoek "5.x.x"
+    joi "13.x.x"
 
 catbox@^7.1.5:
   version "7.1.5"
@@ -3131,6 +3151,10 @@ hoek@4.x.x, hoek@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.0.tgz#72d9d0754f7fe25ca2d01ad8f8f9a9449a89526d"
 
+hoek@5.x.x:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/hoek/-/hoek-5.0.0.tgz#b88953e0fec8e58082e4abd223ed20915d535831"
+
 hoist-non-react-statics@^2.3.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.3.1.tgz#343db84c6018c650778898240135a1420ee22ce0"
@@ -3654,6 +3678,14 @@ joi@10.x.x:
     isemail "2.x.x"
     items "2.x.x"
     topo "2.x.x"
+
+joi@13.x.x:
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/joi/-/joi-13.0.1.tgz#97df285450e3ff5bc4db9eccf40a1cd5cf3ec189"
+  dependencies:
+    hoek "5.x.x"
+    isemail "3.x.x"
+    topo "3.x.x"
 
 joi@^11.1.0:
   version "11.2.0"
@@ -6952,6 +6984,12 @@ topo@2.x.x, topo@^2.0.2:
   resolved "https://registry.yarnpkg.com/topo/-/topo-2.0.2.tgz#cd5615752539057c0dc0491a621c3bc6fbe1d182"
   dependencies:
     hoek "4.x.x"
+
+topo@3.x.x:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/topo/-/topo-3.0.0.tgz#37e48c330efeac784538e0acd3e62ca5e231fe7a"
+  dependencies:
+    hoek "5.x.x"
 
 touch@^3.1.0:
   version "3.1.0"

@@ -5,22 +5,22 @@ rules:
       type: route
       method: GET
       path: "/admin/assets/{p*}"
-      handler: "server/assets.js"
+      handler: "server/handlers/assets.js"
     -
       type: route
       method: GET
       path: "/admin/{p*}"
-      handler: "server/views.js"
+      handler: "server/handlers/views.js"
     -
       type: route
       method:
         - GET
         - POST
       path: "/admin/login"
-      handler: "server/login.js"
-      config: "server/login-config.js"
+      handler: "server/handlers/login.js"
+      config: "server/configs/login.js"
     -
       type: route
       method: POST
       path: "/admin/auth/control"
-      handler: "server/auth-control.js"
+      handler: "server/handlers/auth-control.js"
