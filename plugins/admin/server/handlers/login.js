@@ -1,15 +1,11 @@
 const uuid = require('uuid')
+const Boom = require('boom')
 
 const config = require('../../../../config')
 
 const handler = async function (request, reply) {
-  if (!request.auth.isAuthenticated) {
-    return reply('Authentication failed due to: ' + request.auth.error.message)
-  }
-  console.log(request.auth.credentials)
-  if (request.auth.credentials.profile.email !== config.plugins.admin.email) {
-    return reply('Authentication failed due to: email is not authorize')
-  }
+  if (!request.auth.isAuthenticated) return reply(Boom.unauthorized('Authentication failed due to: ' + request.auth.error.message))
+  if (request.auth.credentials.profile.email !== config.plugins.admin.email) return reply(Boom.unauthorized('Authentication failed due to: email is not authorize'))
   const account = {
     id: uuid.v4(),
     provider: request.auth.credentials.provider,

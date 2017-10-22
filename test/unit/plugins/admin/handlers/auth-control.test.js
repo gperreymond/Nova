@@ -7,7 +7,6 @@ const requestNoRememberMe = {
   path: '/',
   state: {}
 }
-
 let requestWithRememberMe = {
   path: '/',
   state: {},
@@ -37,7 +36,7 @@ describe('[unit] plugin admin/handlers/auth-control', () => {
       done()
     })
   })
-  it('should fail because rememberMe is not in cache', done => {
+  it('should success', done => {
     requestWithRememberMe.state.rememberMePluginAdmin = 'urn:valid'
     handler(requestWithRememberMe, (result) => {
       expect(result.account.id).to.equal('this is a good id')
