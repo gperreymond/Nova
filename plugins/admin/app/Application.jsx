@@ -7,12 +7,13 @@ import {
   Route
 } from 'react-router-dom'
 
-import { Homepage, NoMatch } from './pages'
+import { Homepage, Login, NoMatch } from './pages'
 
 const Application = () => (
   <Router>
     <Switch>
       <Route exact path="/admin" component={Homepage} />
+      <Route exact path="/admin/login" component={Login} />
       <Route component={NoMatch} />
     </Switch>
   </Router>

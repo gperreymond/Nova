@@ -12,8 +12,9 @@ class Store extends Reflux.Store {
     super()
     this.state = {
       stages: {
-        STATE_PAGE_LOGIN: 'STATE_PAGE_LOGIN',
-        STATE_PAGE_LOGIN_LOADING: 'STATE_PAGE_LOGIN_LOADING'
+        STATE_CHECK_COOKIE: 'STATE_CHECK_COOKIE',
+        STATE_REDIRECT_LOGIN: 'STATE_REDIRECT_LOGIN',
+        STATE_PAGE_LOGIN: 'STATE_PAGE_LOGIN'
       },
       currentStage: false
     }

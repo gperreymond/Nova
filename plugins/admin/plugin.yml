@@ -16,7 +16,7 @@ rules:
       method:
         - GET
         - POST
-      path: "/admin/login"
+      path: "/admin/auth/login"
       handler: "server/handlers/login.js"
       config: "server/configs/login.js"
     -

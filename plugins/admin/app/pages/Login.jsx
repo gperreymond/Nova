@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Reflux from 'reflux'
-import { Redirect } from 'react-router-dom'
 
 import Actions from '../libs/Actions'
 import Store from '../libs/Store'
@@ -10,7 +9,7 @@ import Store from '../libs/Store'
 import { Group, Box } from '../components'
 
 import Debug from 'debug'
-const debug = Debug('nova:admin:pages:homepage')
+const debug = Debug('nova:admin:pages:login')
 
 class Login extends Reflux.Component {
   constructor (props) {
@@ -30,7 +29,7 @@ class Login extends Reflux.Component {
     return (
       <Group className="application" width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
         {this.state.currentStage === this.state.stages.STATE_CHECK_COOKIE && <Box title="Veuillez patienter" message="Séquence de démarrage enclenchée." />}
-        {this.state.currentStage === this.state.stages.STATE_REDIRECT_LOGIN && <Redirect to="/admin/login" />}
+        {this.state.currentStage === this.state.stages.STATE_PAGE_LOGIN && <Box title="Vous êtes un étranger" message="Nous n’avons trouvé aucune trace de votre passage." onClick={Actions.authGoogle} />}
       </Group>
     )
   }
