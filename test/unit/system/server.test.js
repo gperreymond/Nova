@@ -4,6 +4,14 @@ const expect = chai.expect
 const server = require('../../../system/server')
 
 describe('[unit] server', () => {
+  it('should fail start the cache in memory', done => {
+    server.startCache().then((result) => {
+      done('not good')
+    }).catch((error) => {
+      expect(error).to.not.equal(null)
+      done()
+    })
+  })
   it('should initialize', done => {
     server.initialize().then(() => {
       done()

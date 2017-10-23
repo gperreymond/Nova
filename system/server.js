@@ -30,8 +30,12 @@ const internals = {
 
 internals.startCache = async function () {
   if (internals.server === false) return Promise.reject(new Error('Server not started'))
-  if (config.cache.type === 'memory') {
-    internals.cache = new Catbox.Client(CatboxMemory)
+  switch (config.cache.type) {
+    case 'memory':
+      internals.cache = new Catbox.Client(CatboxMemory)
+      break
+    default:
+      return Promise.reject(new Error('Server cache type not allowed'))
   }
   await internals.cache.start()
   internals.server.app.cache = internals.cache
