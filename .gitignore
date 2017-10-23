@@ -10,3 +10,6 @@ volumes
 build
 tmp
 yarn.lock
+
+plugins/admin/assets/css/
+plugins/admin/assets/js/
