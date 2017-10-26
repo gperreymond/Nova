@@ -14,10 +14,12 @@ const handler = (context) => {
     uri: window.location.origin + '/admin/auth/control',
     json: true
   }
+  debug('check the account in cache')
   request(options, (error, response, body) => {
     if (error) return debug('error %o', error)
+    const source = window.location.pathname
+    // the user wat not found in cache
     if (response.statusCode === 404) {
-      const source = window.location.pathname
       if (source !== '/admin/login') {
         return context.setState({
           currentStage: context.state.stages.STATE_REDIRECT_LOGIN
@@ -27,8 +29,19 @@ const handler = (context) => {
         currentStage: context.state.stages.STATE_PAGE_LOGIN
       })
     }
+    // an error occured
     if (response.statusCode !== 200) {
       return debug('error %o', body)
+    }
+    // the user was found in cache
+    if (source === '/admin/login') {
+      return context.setState({
+        currentStage: context.state.stages.STATE_REDIRECT_HOMEPAGE
+      })
+    } else {
+      return context.setState({
+        currentStage: context.state.stages.STATE_PAGE_NORMAL
+      })
     }
     /* context.setState({
       currentStage: context.state.stages.STATE_PAGE_HOMEPAGE

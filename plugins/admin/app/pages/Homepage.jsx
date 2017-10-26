@@ -29,8 +29,11 @@ class Login extends Reflux.Component {
     debug('render currentStage=%s', this.state.currentStage)
     return (
       <Group className="application" width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
-        {this.state.currentStage === this.state.stages.STATE_CHECK_COOKIE && <Box title="Veuillez patienter" message="Séquence de démarrage enclenchée." />}
         {this.state.currentStage === this.state.stages.STATE_REDIRECT_LOGIN && <Redirect to="/admin/login" />}
+        {this.state.currentStage === this.state.stages.STATE_CHECK_COOKIE && <Box title="Veuillez patienter" message="Séquence de démarrage enclenchée." />}
+        {this.state.currentStage === this.state.stages.STATE_PAGE_NORMAL &&
+          <h1>APPBAR</h1>
+        }
       </Group>
     )
   }
