@@ -11,5 +11,6 @@ build
 tmp
 yarn.lock
 
+nconf.json
 plugins/admin/assets/css/
 plugins/admin/assets/js/

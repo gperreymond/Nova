@@ -3,14 +3,18 @@ const nconf = require('nconf')
 nconf.argv().env().file({ file: 'nconf.json' })
 
 module.exports = {
-  cache: {
-    type: 'memory'
+  memcached: {
+    host: nconf.get('NOVA_MEMCACHED_HOST') || 'localhost',
+    port: nconf.get('NOVA_MEMCACHED_PORT') || 11211
   },
   server: {
     port: nconf.get('NOVA_SERVER_PORT') || 8000,
+    cache: {
+      type: nconf.get('NOVA_SERVER_CACHE') || 'memory'
+    },
     auth: {
       jwt2: {
-        secret: 'Xc45GvnvB4NSvTQ5BaAz5DHKM9DzEDknxufBTa3wNZnEVJaeRV'
+        secret: nconf.get('NOVA_SERVER_AUTH_JWT2_SECRET') || 'Xc45GvnvB4NSvTQ5BaAz5DHKM9DzEDknxufBTa3wNZnEVJaeRV'
       },
       google: {
         clientId: '10370308640-g91r2ga04jig3j9ajisk4damedt9beah.apps.googleusercontent.com',

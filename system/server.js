@@ -12,6 +12,7 @@ const AuthJWT2 = require('hapi-auth-jwt2')
 
 const Catbox = require('catbox')
 const CatboxMemory = require('catbox-memory')
+const CatboxMemcached = require('catbox-memcached')
 
 const config = require('../config')
 
@@ -30,9 +31,12 @@ const internals = {
 
 internals.startCache = async function () {
   if (internals.server === false) return Promise.reject(new Error('Server not started'))
-  switch (config.cache.type) {
+  switch (config.server.cache.type) {
     case 'memory':
       internals.cache = new Catbox.Client(CatboxMemory)
+      break
+    case 'memcached':
+      internals.cache = new Catbox.Client(CatboxMemcached, config.memcached)
       break
     default:
       return Promise.reject(new Error('Server cache type not allowed'))
