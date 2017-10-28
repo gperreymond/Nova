@@ -1,7 +1,7 @@
 const chai = require('chai')
 const expect = chai.expect
 
-const handler = require('../../../../../plugins/admin/server/handlers/login')
+const handler = require('../../../../../plugins/admin/server/handlers/auth-login')
 
 const requestNotAuthenticate = {
   path: '/',

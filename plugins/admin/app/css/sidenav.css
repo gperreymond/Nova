@@ -77,6 +77,11 @@
   transition: 0.3s
 }
 
+.sidenav a.disable, .sidenav a.disable:hover, .sidenav a.disable:visited {
+  color: #e3eefb;
+  cursor: default;
+}
+
 .sidenav a.logout, .sidenav a.logout:visited {
   color: #c64e4e;
 }
