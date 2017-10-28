@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom'
 import Actions from '../libs/Actions'
 import Store from '../libs/Store'
 
-import { Group, Box } from '../components'
+import { Group, Box, AppBar } from '../components'
 
 import Debug from 'debug'
 const debug = Debug('nova:admin:pages:homepage')
@@ -28,11 +28,14 @@ class Login extends Reflux.Component {
   render () {
     debug('render currentStage=%s', this.state.currentStage)
     return (
-      <Group className="application" width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+      <Group className={this.state.currentStage === this.state.stages.STATE_PAGE_NORMAL ? 'application no-padding' : 'application'} width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
         {this.state.currentStage === this.state.stages.STATE_REDIRECT_LOGIN && <Redirect to="/admin/login" />}
         {this.state.currentStage === this.state.stages.STATE_CHECK_COOKIE && <Box title="Veuillez patienter" message="Séquence de démarrage enclenchée." />}
+        {this.state.currentStage === this.state.stages.STATE_UNCHECK_COOKIE && <Box title="Veuillez patienter" message="Séquence de démarrage enclenchée." />}
         {this.state.currentStage === this.state.stages.STATE_PAGE_NORMAL &&
-          <h1>APPBAR</h1>
+          <Group width="100%" height="100%" verticalAlign="top" horizontalAlign="center" orientation="vertical">
+            <AppBar />
+          </Group>
         }
       </Group>
     )

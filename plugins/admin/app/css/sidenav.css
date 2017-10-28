@@ -1,0 +1,118 @@
+/* The side navigation menu */
+.sidenav {
+  height: calc(100% - 120px);
+  width: 300px;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  overflow: hidden;
+  padding-top: 80px;
+  transition: 0.5s;
+  margin: 20px;
+  margin-top: 100px;
+  border-radius: 5px;
+  -webkit-transition: all 0.25s ease-out;
+     -moz-transition: all 0.25s ease-out;
+      -ms-transition: all 0.25s ease-out;
+       -o-transition: all 0.25s ease-out;
+          transition: all 0.25s ease-out;
+}
+.sidenav.hidden {
+  top: calc(-1 * (100% - 135px));
+}
+
+.sidenav h4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  line-height: 20px;
+  font-size: 20px;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.sidenav span.title {
+  position: absolute;
+  bottom: -2px;
+  left: 5px;
+  padding: 10px;
+  line-height: 20px;
+  font-size: 20px;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  display: none;
+}
+.sidenav.hidden span.title {
+  display: inline;
+}
+.sidenav h6 {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  padding: 10px;
+  line-height: 16px;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 200;
+}
+
+/* The navigation menu links */
+.sidenav a, .sidenav a:visited {
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  margin: 5px;
+  padding: 5px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #5da3c7;
+  display: block;
+  transition: 0.3s
+}
+
+.sidenav a.logout, .sidenav a.logout:visited {
+  color: #c64e4e;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+  color: #333333;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  cursor: pointer;
+  position: absolute;
+  display: inline;
+  top: 0;
+  right: 0;
+  font-size: 36px;
+}
+.sidenav .openbtn {
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  font-size: 36px;
+}
+.sidenav.hidden .openbtn {
+  display: inline;
+}
+.sidenav.hidden .closebtn {
+  display: none;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-width: 640px) {
+  .sidenav {
+    width: calc(100% - 40px);
+  }
+}

@@ -17,10 +17,15 @@ rules:
         - GET
         - POST
       path: "/admin/auth/login"
-      handler: "server/handlers/login.js"
-      config: "server/configs/login.js"
+      handler: "server/handlers/auth-login.js"
+      config: "server/configs/auth-login.js"
     -
       type: route
       method: POST
       path: "/admin/auth/control"
       handler: "server/handlers/auth-control.js"
+    -
+      type: route
+      method: POST
+      path: "/admin/auth/logout"
+      handler: "server/handlers/auth-logout.js"

@@ -15,6 +15,7 @@ class Store extends Reflux.Store {
         STATE_REDIRECT_LOGIN: 'STATE_REDIRECT_LOGIN',
         STATE_REDIRECT_HOMEPAGE: 'STATE_REDIRECT_HOMEPAGE',
         STATE_CHECK_COOKIE: 'STATE_CHECK_COOKIE',
+        STATE_CHECK_UNCOOKIE: 'STATE_CHECK_UNCOOKIE',
         STATE_PAGE_NORMAL: 'STATE_PAGE_NORMAL',
         STATE_PAGE_LOGIN: 'STATE_PAGE_LOGIN'
       },
@@ -25,6 +26,7 @@ class Store extends Reflux.Store {
   }
   onCheckCookie () { this.handlers.onCheckCookie(this) }
   onAuthGoogle () { this.handlers.onAuthGoogle(this) }
+  onLogout () { this.handlers.onLogout(this) }
 }
 
 export default Store

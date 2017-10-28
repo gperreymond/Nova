@@ -1,0 +1,44 @@
+/* eslint jsx-quotes: ["error", "prefer-double"] */
+
+import React, { Component } from 'react'
+
+import Actions from '../libs/Actions'
+import { Group } from '.'
+
+class AppBox extends Component {
+  constructor (props) {
+    super(props)
+    this.animate = () => {
+      document.getElementById('sidenav').className === 'sidenav hidden' ? document.getElementById('sidenav').className = 'sidenav' : document.getElementById('sidenav').className = 'sidenav hidden'
+    }
+    this.logout = () => {
+      Actions.logout()
+    }
+  }
+  render () {
+    return (
+      <Group width="100%">
+        <Group className="appbar" width="100%" height="80px" horizontalAlign="center">
+          <Group width="100%" height="auto">
+            <img alt="logo abibao" className="logo" src="/admin/assets/images/abibao-logo-gris-jaune.png" />
+          </Group>
+        </Group>
+        <Group style={{marginTop: '80px'}} width="100%" height="auto" verticalAlign="top" horizontalAlign="center" orientation="vertical">
+          <div id="sidenav" className="sidenav hidden">
+            <h4>Gilles Perreymond</h4><h6>Administrateur</h6>
+            <a className="closebtn" onClick={this.animate}>&times;</a>
+            <a>Dashboard</a>
+            <a>Configuration</a>
+            <a>Pages</a>
+            <br />
+            <a className="logout" onClick={this.logout}>Logout</a>
+            <a className="openbtn" onClick={this.animate}>&#9660;</a>
+            <span className="title">Gilles Perreymond</span>
+          </div>
+        </Group>
+      </Group>
+    )
+  }
+}
+
+export default AppBox
