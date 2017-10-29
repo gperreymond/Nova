@@ -7,9 +7,7 @@ describe('[unit] methods getPages', () => {
   it('should success', done => {
     method((error, result) => {
       if (error) return done(error)
-      let page = result[0]
-      expect(page.number).to.eq('01')
-      expect(page.name).to.eq('home')
+      expect(result).to.be.an('array')
       done()
     })
   })

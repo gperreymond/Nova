@@ -1,7 +1,7 @@
 /* eslint jsx-quotes: ["error", "prefer-double"] */
 
-import React from 'react'
-import Reflux from 'reflux'
+const React = require('react')
+const Reflux = require('reflux')
 
 class Layout extends Reflux.Component {
   render () {

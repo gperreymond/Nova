@@ -1,3 +1,4 @@
+const path = require('path')
 const chai = require('chai')
 const expect = chai.expect
 
@@ -30,10 +31,20 @@ describe('[unit] plugin cms', () => {
     })
   })
   it('should success read /home', done => {
+    const filepath = path.resolve(__dirname, '../../..', 'data/pages/01.home/default.md')
     getPages((error, result) => {
       if (error) return done(error)
       requestSucess.pre.pages = {
-        dataProvider: result
+        dataProvider: [{
+          number: '01',
+          name: 'home',
+          theme: 'default',
+          filepath,
+          metadata: {
+            title: 'Home',
+            publish: true
+          }
+        }]
       }
       handler(requestSucess, {
         view: function (result) {

@@ -6,6 +6,13 @@ const Boom = require('boom')
 const handler = (request, reply) => {
   request.server.methods.getPages((error, pages) => {
     if (error) return reply(Boom.boomify(error, { statusCode: 400 }))
+    if (pages.length === 0) {
+      return reply({
+        type: 'pages',
+        count: pages.length,
+        dataProvider: []
+      })
+    }
     async.map(pages, function (page, next) {
       const stream = fse.createReadStream(path.resolve(__dirname, '../../user/pages', page.filepath))
       stream.on('data', (chunk) => {

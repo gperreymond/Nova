@@ -16,7 +16,9 @@ const CatboxMemcached = require('catbox-memcached')
 
 const config = require('../config')
 
-// Declare internals
+require('babel-core/register')({
+  plugins: ['transform-react-jsx']
+})
 
 const internals = {
   server: false,

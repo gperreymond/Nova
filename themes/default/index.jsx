@@ -1,10 +1,10 @@
 /* eslint jsx-quotes: ["error", "prefer-double"] */
 
-import React from 'react'
-import Reflux from 'reflux'
+const React = require('react')
+const Reflux = require('reflux')
+const ReactMarkdown = require('react-markdown')
 
-import Layout from './layout.jsx'
-import ReactMarkdown from 'react-markdown'
+const Layout = require('./layout.jsx')
 
 class Page extends Reflux.Component {
   render () {
