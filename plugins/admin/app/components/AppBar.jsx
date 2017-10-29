@@ -18,13 +18,13 @@ class AppBox extends Component {
   }
   render () {
     return (
-      <Group width="100%">
-        <Group className="appbar" width="100%" height="80px" horizontalAlign="center">
+      <Group width="100%" style={{zIndex: 1000}}>
+        <Group className="appbar" width="100%" height="80px" horizontalAlign="center" style={{zIndex: 1000}}>
           <Group width="100%" height="auto">
             <img alt="logo abibao" className="logo" src="/admin/assets/images/abibao-logo-gris-jaune.png" />
           </Group>
         </Group>
-        <Group style={{marginTop: '80px'}} width="100%" height="auto" verticalAlign="top" horizontalAlign="center" orientation="vertical">
+        <Group style={{marginTop: '80px', zIndex: 900}} width="100%" height="auto" verticalAlign="top" horizontalAlign="center" orientation="vertical">
           <div id="sidenav" className="sidenav hidden">
             <h4>Gilles Perreymond</h4><h6>Administrateur</h6>
             <a className="closebtn" onClick={this.animate}>&times;</a>

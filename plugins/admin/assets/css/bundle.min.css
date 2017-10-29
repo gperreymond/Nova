@@ -478,7 +478,6 @@ template {
   height: calc(100% - 120px);
   width: 300px;
   position: fixed;
-  z-index: 100;
   top: 0;
   left: 0;
   background-color: #ffffff;
@@ -571,7 +570,7 @@ template {
   cursor: pointer;
   position: absolute;
   display: inline;
-  top: 0;
+  top: -10px;
   right: 0;
   font-size: 36px;
 }
@@ -579,7 +578,7 @@ template {
   cursor: pointer;
   display: none;
   position: absolute;
-  bottom: 0;
+  bottom: -10px;
   right: -10px;
   font-size: 36px;
 }
@@ -597,7 +596,6 @@ template {
   }
 }
 .appbar {
-  z-index: 1000;
   padding: 10px;
   margin: 0;
   position: fixed;
@@ -647,11 +645,9 @@ template {
   top: 0;
   background: #f6f9ff;
   height: 120px;
-  z-index: 999;
 }
 .content.margin {
   margin-top: 120px;
-  z-index: 900;
 }
 
 .content.card {
@@ -666,7 +662,6 @@ template {
 }
 .content.card h2 {
   text-shadow: 2px 2px #ffffff;
-  z-index: 10;
 }
 .content.card h3 {
   width: 100%;
@@ -676,7 +671,6 @@ template {
   overflow: hidden;
 }
 .content.card h6 {
-  z-index: 10;
 }
 .content.card .picture {
   position: absolute;
@@ -692,7 +686,6 @@ template {
   background-repeat: no-repeat;
   background-size: cover;
   border: dashed 8px #ffffff;
-  z-index: 0;
 }
 
 @media screen and (max-width: 800px) and (min-width: 640px) {
@@ -812,12 +805,14 @@ textarea.border {
   color: #dda055;
 }
 .button {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 400;
   margin: 0;
   padding: 10px;
   text-decoration: none;
   display: inline-block;
   border-radius: 5px;
-  font-weight: bold;
   cursor: pointer;
   position: relative;
   text-align: center;
@@ -870,7 +865,6 @@ textarea.border {
   position: fixed;
   right: 10px;
   top: 10px;
-  z-index: 999;
 }
 .button.large {
   font-size: 24px;
@@ -956,6 +950,11 @@ h2 {
   line-height: 28px;
   font-weight: 800;
   text-transform: uppercase;
+}
+h3 {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 800;
 }
 h4 {
   font-size: 22px;

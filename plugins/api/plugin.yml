@@ -11,3 +11,8 @@ rules:
     method: GET
     path: "/api/plugins"
     handler: "handlers/plugins/list.js"
+  -
+    type: route
+    method: POST
+    path: "/api/pages"
+    handler: "handlers/pages/create.js"

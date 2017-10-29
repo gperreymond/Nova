@@ -3,7 +3,8 @@ import Reflux from 'reflux'
 const Actions = Reflux.createActions([
   'checkCookie',
   'authGoogle',
-  'logout'
+  'logout',
+  'createPage'
 ])
 
 export default Actions

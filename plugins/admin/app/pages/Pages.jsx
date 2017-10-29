@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom'
 import Actions from '../libs/Actions'
 import Store from '../libs/Store'
 
-import { Group, Box, AppBar } from '../components'
+import { Group, Box, AppBar, Button } from '../components'
 
 import Debug from 'debug'
 const debug = Debug('nova:admin:pages:pages')
@@ -16,6 +16,9 @@ class Pages extends Reflux.Component {
   constructor (props) {
     super(props)
     this.store = Store
+    this.create = () => {
+      Actions.createPage()
+    }
   }
   componentDidMount () {
     debug('componentDidMount')
@@ -35,6 +38,13 @@ class Pages extends Reflux.Component {
         {this.state.currentStage === this.state.stages.STATE_PAGE_NORMAL &&
           <Group width="100%" height="100%" verticalAlign="top" horizontalAlign="center" orientation="vertical">
             <AppBar />
+            <Group width="100%" height="100%" orientation="vertical" horizontalAlign="center" verticalAlign="top">
+              <Group style={{top: '120px'}} className="content fixed no-border" width="100%" orientation="vertical">
+                <h3 className="title dark-blue">Bienvenue sur l’espace pages</h3>
+                <h4 className="title dark-blue">Le contenu c'est la vie !</h4>
+                <Button onClick={this.create} style={{position: 'absolute', right: '20px'}} className="button icon circle orange" icon="plus" />
+              </Group>
+            </Group>
           </Group>
         }
       </Group>

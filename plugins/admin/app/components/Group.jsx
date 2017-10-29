@@ -131,10 +131,10 @@ class Group extends Component {
     }
   }
   componentDidMount () {
-    // creationComplete)
     this.setState({
       style: this.style()
     })
+    // creationComplete
     if (this.state.hasCreationComplete) {
       this.props.creationComplete()
     }
