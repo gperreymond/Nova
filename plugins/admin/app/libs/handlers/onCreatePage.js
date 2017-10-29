@@ -9,7 +9,10 @@ const handler = (context) => {
   var options = {
     method: 'POST',
     uri: window.location.origin + '/api/pages',
-    json: true
+    json: true,
+    headers: {
+      'Authorization': context.state.token
+    }
   }
   request(options, (error, response, body) => {
     if (error) debug('error %o', error)

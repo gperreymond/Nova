@@ -10,6 +10,6 @@ down:
 	docker-compose down;
 
 tests:
-	yarn run test:standard;
-	yarn run test:coverage;
-	yarn run coverage:publish;
+	npm run test:standard;
+	npm run test:coverage;
+	npm run coverage:publish;

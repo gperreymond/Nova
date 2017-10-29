@@ -11,6 +11,8 @@ class Store extends Reflux.Store {
     debug('constructor')
     super()
     this.state = {
+      token: false,
+      account: false,
       stages: {
         STATE_REDIRECT_LOGIN: 'STATE_REDIRECT_LOGIN',
         STATE_REDIRECT_HOMEPAGE: 'STATE_REDIRECT_HOMEPAGE',

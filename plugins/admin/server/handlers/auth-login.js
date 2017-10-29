@@ -1,4 +1,5 @@
 const uuid = require('uuid')
+const jwt = require('jsonwebtoken')
 const Boom = require('boom')
 
 const config = require('../../../../config')
@@ -15,7 +16,13 @@ const handler = async function (request, reply) {
   const userURN = 'urn:plugin:admin:user:' + account.id
   const key = { id: userURN, segment: 'account' }
   await request.server.app.cache.set(key, account, ttl)
-  reply().state('rememberMePluginAdmin', userURN, { ttl, isSecure: false, isHttpOnly: false }).redirect('/admin')
+  const payload = {
+    id: userURN,
+    scope: 'admin',
+    iss: 'NOVA'
+  }
+  const token = jwt.sign(payload, config.server.auth.jwt2.secret)
+  reply({token}).state('rememberMePluginAdmin', token, { ttl, isSecure: false, isHttpOnly: false }).redirect('/admin')
 }
 
 module.exports = handler

@@ -36,6 +36,11 @@ const handler = (context) => {
       return debug('error %o', body)
     }
     // the user was found in cache
+    debug(body)
+    context.setState({
+      account: body.account.item,
+      token: body.token
+    })
     if (source === '/admin/login') {
       debug('the user was found in cache')
       return context.setState({

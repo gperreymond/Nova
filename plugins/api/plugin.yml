@@ -15,4 +15,5 @@ rules:
     type: route
     method: POST
     path: "/api/pages"
+    config: "config.js"
     handler: "handlers/pages/create.js"

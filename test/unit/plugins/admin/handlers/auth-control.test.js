@@ -1,5 +1,7 @@
+const jwt = require('jsonwebtoken')
 const chai = require('chai')
 const expect = chai.expect
+const config = require('../../../../../config')
 
 const handler = require('../../../../../plugins/admin/server/handlers/auth-control')
 
@@ -30,14 +32,16 @@ describe('[unit] plugin admin/handlers/auth-control', () => {
     })
   })
   it('should fail because rememberMe is not in cache', done => {
-    requestWithRememberMe.state.rememberMePluginAdmin = 'urn:error'
+    const token = jwt.sign({id: 'urn:error'}, config.server.auth.jwt2.secret)
+    requestWithRememberMe.state.rememberMePluginAdmin = token
     handler(requestWithRememberMe, (error) => {
       expect(error.isBoom).to.equal(true)
       done()
     })
   })
   it('should success', done => {
-    requestWithRememberMe.state.rememberMePluginAdmin = 'urn:valid'
+    const token = jwt.sign({id: 'urn:valid'}, config.server.auth.jwt2.secret)
+    requestWithRememberMe.state.rememberMePluginAdmin = token
     handler(requestWithRememberMe, (result) => {
       expect(result.account.id).to.equal('this is a good id')
       done()

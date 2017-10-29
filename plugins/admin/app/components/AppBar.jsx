@@ -26,7 +26,7 @@ class AppBox extends Component {
         </Group>
         <Group style={{marginTop: '80px', zIndex: 900}} width="100%" height="auto" verticalAlign="top" horizontalAlign="center" orientation="vertical">
           <div id="sidenav" className="sidenav hidden">
-            <h4>Gilles Perreymond</h4><h6>Administrateur</h6>
+            <h4>{this.props.email}</h4><h6>Administrateur</h6>
             <a className="closebtn" onClick={this.animate}>&times;</a>
             <NavLink to="/admin">Dashboard</NavLink>
             <a className="disable">Configuration</a>
@@ -34,7 +34,7 @@ class AppBox extends Component {
             <br />
             <a className="logout" onClick={this.logout}>Logout</a>
             <a className="openbtn" onClick={this.animate}>&#9660;</a>
-            <span className="title">Gilles Perreymond</span>
+            <span className="title">{this.props.email}</span>
           </div>
         </Group>
       </Group>

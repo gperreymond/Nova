@@ -526,7 +526,7 @@ template {
 }
 .sidenav h6 {
   position: absolute;
-  top: 20px;
+  top: 25px;
   left: 0;
   padding: 10px;
   line-height: 16px;

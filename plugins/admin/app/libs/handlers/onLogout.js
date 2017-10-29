@@ -18,6 +18,10 @@ const handler = (context) => {
   }
   request(options, (error, response, body) => {
     if (error) debug('error %o', error)
+    context.setState({
+      account: false,
+      token: false
+    })
     Actions.checkCookie()
   })
 }

@@ -37,7 +37,7 @@ class Pages extends Reflux.Component {
         {this.state.currentStage === this.state.stages.STATE_UNCHECK_COOKIE && <Box title="Veuillez patienter" message="Séquence de démarrage enclenchée." />}
         {this.state.currentStage === this.state.stages.STATE_PAGE_NORMAL &&
           <Group width="100%" height="100%" verticalAlign="top" horizontalAlign="center" orientation="vertical">
-            <AppBar />
+            <AppBar email={this.state.account.email} />
             <Group width="100%" height="100%" orientation="vertical" horizontalAlign="center" verticalAlign="top">
               <Group style={{top: '120px'}} className="content fixed no-border" width="100%" orientation="vertical">
                 <h3 className="title dark-blue">Bienvenue sur l’espace pages</h3>

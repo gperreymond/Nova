@@ -10,6 +10,7 @@ volumes
 build
 tmp
 yarn.lock
+package-lock.json
 
 nconf.json
 plugins/admin/assets/css/
