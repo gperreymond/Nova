@@ -1,3 +1,4 @@
+const path = require('path')
 const nconf = require('nconf')
 
 nconf.argv().env().file({ file: 'nconf.json' })
@@ -24,7 +25,10 @@ module.exports = {
       }
     }
   },
-  plugins: {
+  settings: {
+    userpath: nconf.get('NOVA_SETTINGS_USERPATH') || path.resolve(__dirname, '../user')
+  },
+  accounts: {
     admin: {
       email: 'gperreymond@gmail.com'
     }

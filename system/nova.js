@@ -7,10 +7,10 @@ const _ = require('lodash')
 
 const NovaPlugin = {
   register: function (server, options, next) {
-    const directoryPages = path.resolve(__dirname, '../plugins')
-    debug('directoryPages=%s', directoryPages)
+    const directoryPlugins = path.resolve(__dirname, '../plugins')
+    debug('directoryPlugins=%s', directoryPlugins)
     let plugins = []
-    glob(directoryPages + '/**/plugin.yml').then(files => {
+    glob(directoryPlugins + '/**/plugin.yml').then(files => {
       files.map(file => {
         const pluginPath = path.dirname(file)
         let plugin = YAML.load(file)

@@ -5,7 +5,8 @@
   "scripts": {
     "start": " DEBUG=nova:* NODE_ENV=development node_modules/.bin/nodemon --config nodemon.json index.js",
     "test:standard": "node_modules/.bin/standard --fix server/**/*.js src/**/*.js test/**/*.js | node_modules/.bin/snazzy",
-    "test:coverage": "NOVA_SERVER_PORT=9090 node_modules/.bin/nyc --reporter=lcov --reporter=text node_modules/.bin/mocha --opts .mocharc",
+    "test:coverage": "./test/coverage.sh",
+    "test:coverage:react": "react-scripts test --env=jsdom --coverage",
     "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "plugin-admin:start": "./node_modules/.bin/webpack --watch --colors --config=plugins/admin/webpack.config.js",
     "plugin-admin:build": "./node_modules/.bin/webpack -p --config=plugins/admin/webpack.config.js --optimize-minimize --colors"

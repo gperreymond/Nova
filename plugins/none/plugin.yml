@@ -1,0 +1,5 @@
+name: "None"
+description: ""
+rules:
+    -
+      type: none

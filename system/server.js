@@ -31,24 +31,34 @@ const internals = {
   }
 }
 
-internals.startCache = async function () {
-  if (internals.server === false) return Promise.reject(new Error('Server not started'))
-  switch (config.server.cache.type) {
-    case 'memory':
-      internals.cache = new Catbox.Client(CatboxMemory)
-      break
-    case 'memcached':
-      internals.cache = new Catbox.Client(CatboxMemcached, config.memcached)
-      break
-    default:
-      return Promise.reject(new Error('Server cache type not allowed'))
-  }
-  await internals.cache.start()
-  internals.server.app.cache = internals.cache
-  return {
-    isReady: internals.cache.isReady(),
-    result: internals.cache
-  }
+internals.startCache = function (type) {
+  return new Promise((resolve, reject) => {
+    if (!type) type = config.server.cache.type
+    if (internals.server === false) {
+      internals.cache = false
+      return reject(new Error('Server not started'))
+    }
+    switch (type) {
+      case 'memory':
+        internals.cache = new Catbox.Client(CatboxMemory)
+        break
+      case 'memcached':
+        internals.cache = new Catbox.Client(CatboxMemcached, config.memcached)
+        break
+      default:
+        return reject(new Error('Server cache type not allowed'))
+    }
+    internals.cache.start().then(() => {
+      internals.server.app.cache = internals.cache
+      resolve({
+        isReady: internals.cache.isReady(),
+        result: internals.cache
+      })
+    }).catch(error => {
+      console.log(error)
+      return reject(error)
+    })
+  })
 }
 
 internals.stopCache = async function () {

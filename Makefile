@@ -1,4 +1,4 @@
-.PHONY: default up down tests
+.PHONY: default up down coverage test
 
 default: up
 
@@ -9,7 +9,10 @@ up:
 down:
 	docker-compose down;
 
-tests:
+coverage:
+	npm run test:coverage;
+
+test:
 	npm run test:standard;
 	npm run test:coverage;
 	npm run coverage:publish;
