@@ -17,7 +17,7 @@ const handler = (context) => {
     json: true
   }
   request(options, (error, response, body) => {
-    if (error) debug('error %o', error)
+    if (error) return debug('error %o', error)
     context.setState({
       account: false,
       token: false

@@ -4,7 +4,7 @@ const Dotenv = require('dotenv-webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
-  entry: path.join(__dirname, './app/index.jsx'),
+  entry: path.join(__dirname, './src/index.jsx'),
   resolve: {
     extensions: ['.js', '.jsx']
   },
@@ -23,7 +23,7 @@ module.exports = {
             ['env', {modules: false}]
           ]}
       },
-      include: path.resolve(__dirname, 'app')
+      include: path.resolve(__dirname, 'src')
     }, {
       test: /\.css$/,
       use: ExtractTextPlugin.extract({

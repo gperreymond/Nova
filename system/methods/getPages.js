@@ -6,7 +6,7 @@ const config = require('../../config')
 const method = (next) => {
   const directoryPages = path.resolve(config.settings.userpath, 'pages')
   let pages = []
-  glob(directoryPages + '/**/*.md').then(files => {
+  glob(directoryPages + '/*/*.md').then(files => {
     files.map(file => {
       let params = path.dirname(file).split(directoryPages)[1].split('.')
       pages.push({

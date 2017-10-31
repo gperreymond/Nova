@@ -16,7 +16,7 @@ const handler = (context) => {
   }
   debug('check the account in cache')
   request(options, (error, response, body) => {
-    if (error) debug('error %o', error)
+    if (error) return debug('error %o', error)
     const source = window.location.pathname
     // the user wat not found in cache
     if (response.statusCode === 404) {

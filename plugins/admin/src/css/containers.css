@@ -22,6 +22,9 @@
   width: 100%;
   max-width: 900px;
 }
+.content.no-padding {
+  padding: 0;
+}
 .content.no-border {
   background: none;
   box-shadow: none;
@@ -56,9 +59,13 @@
   border: solid #ffffff 2px;
 }
 .content.card h2 {
+  font-size: 18px;
+  line-height: 18px;
   text-shadow: 2px 2px #ffffff;
 }
 .content.card h3 {
+  font-size: 14px;
+  line-height: 14px;
   width: 100%;
   display: inline-block; ;
   text-overflow: ellipsis;

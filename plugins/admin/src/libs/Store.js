@@ -29,7 +29,8 @@ class Store extends Reflux.Store {
   onCheckCookie () { this.handlers.onCheckCookie(this) }
   onAuthGoogle () { this.handlers.onAuthGoogle(this) }
   onLogout () { this.handlers.onLogout(this) }
-  onCreatePage () { this.handlers.onCreatePage(this) }
+  onCreatePage (data) { this.handlers.onCreatePage(data, this) }
+  onListPages () { this.handlers.onListPages(this) }
 }
 
 export default Store

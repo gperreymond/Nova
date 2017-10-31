@@ -627,6 +627,9 @@ template {
   width: 100%;
   max-width: 900px;
 }
+.content.no-padding {
+  padding: 0;
+}
 .content.no-border {
   background: none;
   box-shadow: none;
@@ -661,9 +664,13 @@ template {
   border: solid #ffffff 2px;
 }
 .content.card h2 {
+  font-size: 18px;
+  line-height: 18px;
   text-shadow: 2px 2px #ffffff;
 }
 .content.card h3 {
+  font-size: 14px;
+  line-height: 14px;
   width: 100%;
   display: inline-block; ;
   text-overflow: ellipsis;
@@ -737,7 +744,9 @@ input[type=text].border {
   padding: 8px;
   font-size: 16px;
   line-height: 16px;
-  font-weight: normal;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 400;
   width: 100%
 }
 input[type=text].border:hover, textarea.border:hover {
@@ -775,10 +784,22 @@ textarea.border {
   border-radius: 5px;
 }
 .form-field > label {
-  display: block;
-  font-weight: bold;
+  display: inline;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 300;
   font-size: 18px;
   margin-bottom: 10px;
+}
+.form-field > label > span.required {
+  display: inline;
+  color: #c64e4e;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  margin: 0;
+  margin-left: 5px;
 }
 
 @media screen and (max-width: 640px) {

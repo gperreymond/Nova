@@ -11,7 +11,7 @@ class Layout extends Reflux.Component {
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="stylesheet" href={'themes/' + this.props.theme + '/assets/css/github-markdown.min.css'} />
-          <title>{this.props.title}</title>
+          <title>{this.props.metadata.title}</title>
         </head>
         <body>
           {this.props.children}
