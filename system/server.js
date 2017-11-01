@@ -116,6 +116,7 @@ internals.initialize = function () {
         }
       })
       // methods
+      internals.server.method({ name: 'getMetadataFromFile', method: require('./methods/getMetadataFromFile'), options: {bind: internals.server} })
       internals.server.method({ name: 'getPages', method: require('./methods/getPages'), options: {bind: internals.server} })
       internals.server.method({ name: 'getPlugins', method: require('./methods/getPlugins'), options: {bind: internals.server} })
       // route: themes

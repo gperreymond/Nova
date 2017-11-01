@@ -5,15 +5,21 @@ rules:
     type: route
     method: GET
     path: "/api/pages"
-    handler: "handlers/pages/list.js"
+    handler: "pages/list.js"
+  -
+    type: route
+    method: GET
+    path: "/api/pages/{uuid}"
+    handler: "pages/read/handler.js"
+    config: "pages/read/config.js"
   -
     type: route
     method: GET
     path: "/api/plugins"
-    handler: "handlers/plugins/list.js"
+    handler: "plugins/list.js"
   -
     type: route
     method: POST
     path: "/api/pages"
-    handler: "handlers/pages/create/handler.js"
-    config: "handlers/pages/create/config.js"
+    handler: "pages/create/handler.js"
+    config: "pages/create/config.js"

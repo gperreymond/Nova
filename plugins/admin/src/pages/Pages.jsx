@@ -11,7 +11,7 @@ import { DataGroup, Group, Box, AppBar, Button } from '../components'
 import { PageCardListRenderer } from '../components/renderers'
 
 import Debug from 'debug'
-const debug = Debug('nova:admin:pages:pages')
+const debug = Debug('nova:admin:pages:Pages')
 
 class Pages extends Reflux.Component {
   constructor (props) {

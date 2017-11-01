@@ -36,7 +36,7 @@
     "debug": "3.1.0",
     "fs-extra": "4.0.2",
     "glob": "7.1.2",
-    "glob-promise": "3.2.0",
+    "glob-promise": "3.3.0",
     "good": "7.3.0",
     "hapi": "16.6.2",
     "hapi-auth-jwt2": "7.3.0",

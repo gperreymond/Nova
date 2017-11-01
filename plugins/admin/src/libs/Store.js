@@ -4,7 +4,7 @@ import Actions from './Actions'
 import Handlers from './Handlers'
 
 import Debug from 'debug'
-const debug = Debug('nova:admin:store')
+const debug = Debug('nova:admin:Store')
 
 class Store extends Reflux.Store {
   constructor () {

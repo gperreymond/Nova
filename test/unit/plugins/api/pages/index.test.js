@@ -1,8 +1,8 @@
 const chai = require('chai')
 const expect = chai.expect
 
-const list = require('../../../../../plugins/api/handlers/pages/list')
-const create = require('../../../../../plugins/api/handlers/pages/create/handler')
+const list = require('../../../../../plugins/api/pages/list')
+const create = require('../../../../../plugins/api/pages/create/handler')
 
 const requestCreateSuccess = {
   path: '/',
@@ -13,7 +13,8 @@ const requestCreateSuccess = {
   },
   server: {
     methods: {
-      getPages: require('../../../../../system/methods/getPages')
+      getPages: require('../../../../../system/methods/getPages'),
+      getMetadataFromFile: require('../../../../../system/methods/getMetadataFromFile')
     }
   }
 }
@@ -22,7 +23,8 @@ const requestListSuccess = {
   path: '/',
   server: {
     methods: {
-      getPages: require('../../../../../system/methods/getPages')
+      getPages: require('../../../../../system/methods/getPages'),
+      getMetadataFromFile: require('../../../../../system/methods/getMetadataFromFile')
     }
   }
 }
@@ -33,7 +35,8 @@ const requestListFail = {
     methods: {
       getPages: function (callback) {
         callback(new Error('ERROR_TEST_UNIT'))
-      }
+      },
+      getMetadataFromFile: require('../../../../../system/methods/getMetadataFromFile')
     }
   }
 }
@@ -45,7 +48,8 @@ const requestListSuccessEmpty = {
       getPages: function (callback) {
         const dataProvider = []
         callback(null, dataProvider)
-      }
+      },
+      getMetadataFromFile: require('../../../../../system/methods/getMetadataFromFile')
     }
   }
 }

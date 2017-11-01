@@ -2,7 +2,7 @@ const path = require('path')
 const fse = require('fs-extra')
 const uuid = require('uuid')
 
-const config = require('../../../../../config')
+const config = require('../../../../config')
 const list = require('../list')
 
 const handler = async (request, reply) => {

@@ -1,7 +1,7 @@
 const chai = require('chai')
 const expect = chai.expect
 
-const handler = require('../../../../../plugins/api/handlers/plugins/list')
+const handler = require('../../../../../plugins/api/plugins/list')
 
 const requestSucess = {
   path: '/',

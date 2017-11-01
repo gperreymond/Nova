@@ -10,9 +10,9 @@ import Store from '../libs/Store'
 import { Group, Box, AppBar } from '../components'
 
 import Debug from 'debug'
-const debug = Debug('nova:admin:pages:Homepage')
+const debug = Debug('nova:admin:pages:PageDetails')
 
-class Homepage extends Reflux.Component {
+class PageDetails extends Reflux.Component {
   constructor (props) {
     super(props)
     this.store = Store
@@ -42,4 +42,4 @@ class Homepage extends Reflux.Component {
   }
 }
 
-export default Homepage
+export default PageDetails

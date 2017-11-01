@@ -1,6 +1,6 @@
 const config = {
   pre: [
-    { method: require('../api/handlers/pages/list'), assign: 'pages' }
+    { method: require('../api/pages/list'), assign: 'pages' }
   ]
 }
 

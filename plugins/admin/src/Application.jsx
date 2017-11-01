@@ -8,7 +8,13 @@ import {
 } from 'react-router-dom'
 
 import { ErrorBoundary } from './components'
-import { Homepage, Login, NoMatch, Pages } from './pages'
+import {
+  Homepage,
+  Login,
+  NoMatch,
+  Pages,
+  PageDetails
+} from './pages'
 
 const Application = () => (
   <ErrorBoundary>
@@ -17,6 +23,7 @@ const Application = () => (
         <Route exact path="/admin" component={Homepage} />
         <Route exact path="/admin/login" component={Login} />
         <Route exact path="/admin/pages" component={Pages} />
+        <Route exact path="/admin/pages/:uuid" component={PageDetails} />
         <Route component={NoMatch} />
       </Switch>
     </Router>

@@ -10,7 +10,7 @@ import Store from '../libs/Store'
 import { Group, Box } from '../components'
 
 import Debug from 'debug'
-const debug = Debug('nova:admin:pages:login')
+const debug = Debug('nova:admin:pages:Login')
 
 class Login extends Reflux.Component {
   constructor (props) {

@@ -8,7 +8,7 @@ import './css/main.css'
 import Application from './Application'
 
 import Debug from 'debug'
-const debug = Debug('nova:admin:application')
+const debug = Debug('nova:admin:Application')
 if (process.env.DEBUG === true) window.localStorage.debug = 'nova:admin:*'
 
 debug('render application')
