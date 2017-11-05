@@ -1,4 +1,5 @@
 const _ = require('lodash')
+const uuid = require('uuid')
 const path = require('path')
 const fse = require('fs-extra')
 const Boom = require('boom')
@@ -20,6 +21,16 @@ const handler = (request, reply) => {
   const currentIndex = _.findIndex(pages, function (item) { return item.name === requestName })
   if (currentIndex === -1) return reply(Boom.notFound('Page not found!'))
   let page = pages[currentIndex]
+  // get page menus
+  page.menus = []
+  pages.map(item => {
+    page.menus.push({
+      uuid: uuid.v4(),
+      label: _.capitalize(item.name),
+      href: _.toLower(item.name),
+      active: item.name === requestName
+    })
+  })
   // get page content
   const chunk = fse.readFileSync(path.resolve(__dirname, '../../user/pages', page.filepath))
   let content = chunk.toString().split('---')
