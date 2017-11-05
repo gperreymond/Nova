@@ -1,5 +1,5 @@
 <div class="video-player">
   <div v-if="videoId" class="videoWrapper">
-     <iframe :width="width" :height="height" :src="'//www.youtube.com/embed/' + videoId + '?rel=0&hd=1&autoplay=0&showinfo=0'" frameborder="0" allowfullscreen></iframe>
+     <iframe :width="width" :height="height" :src="'//www.youtube.com/embed/' + videoId + '?' + qs" frameborder="0" allowfullscreen></iframe>
   </div>
 </div>

@@ -4,6 +4,7 @@ const fse = require('fs-extra')
 const Boom = require('boom')
 const YAML = require('yamljs')
 const async = require('async')
+const queryString = require('query-string')
 
 const Promise = require('bluebird')
 const Vue = require('vue')
@@ -31,15 +32,18 @@ const handler = (request, reply) => {
     if (contentModule[1]) {
       metadataModule = YAML.parse(contentModule[1].toString())
     }
+    if (metadataModule['query-string']) {
+      metadataModule.qs = queryString.stringify(metadataModule['query-string'])
+    }
     page.modules[module] = {
       metadata: metadataModule,
       content: contentModule[2] || contentModule[0]
     }
     let app = new Vue({
       template: fse.readFileSync(path.resolve(__dirname, '../../themes', page.theme, 'templates', metadataModule.type + '.html')).toString(),
-      data: page.modules[module].metadata.data
+      data: page.modules[module].metadata
     })
-    renderToString(app, page.modules[module].metadata.data).then((result) => {
+    renderToString(app, page.modules[module].metadata).then((result) => {
       // replace plugin in the plugin content
       let regexPlugin = new RegExp('\\[plugins:' + metadataModule.type + ']', 'g')
       page.modules[module].content = page.modules[module].content.replace(regexPlugin, result)
