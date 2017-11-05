@@ -3,8 +3,15 @@ const path = require('path')
 const fse = require('fs-extra')
 const Boom = require('boom')
 const YAML = require('yamljs')
+const async = require('async')
+
+const Promise = require('bluebird')
+const Vue = require('vue')
+const renderer = require('vue-server-renderer').createRenderer()
+const renderToString = Promise.promisify(renderer.renderToString)
 
 const handler = (request, reply) => {
+  Vue.config.silent = true
   const pages = request.pre.pages.dataProvider
   // get current page or 404
   let requestName = request.path.substr(1)
@@ -16,7 +23,8 @@ const handler = (request, reply) => {
   const chunk = fse.readFileSync(path.resolve(__dirname, '../../user/pages', page.filepath))
   let content = chunk.toString().split('---')
   page.content = content[2] || content[0]
-  Object.keys(page.modules).map(module => {
+  const modules = Object.keys(page.modules)
+  async.map(modules, (module, next) => {
     const chunkModule = fse.readFileSync(page.modules[module])
     let contentModule = chunkModule.toString().split('---')
     let metadataModule = { type: false }
@@ -27,12 +35,23 @@ const handler = (request, reply) => {
       metadata: metadataModule,
       content: contentModule[2] || contentModule[0]
     }
-    // remplace module in page content
-    const regex = new RegExp('\\[modules:' + module + ']', 'g')
-    page.content = page.content.replace(regex, page.modules[module].content)
+    let app = new Vue({
+      template: fse.readFileSync(path.resolve(__dirname, '../../themes', page.theme, 'templates', metadataModule.type + '.html')).toString(),
+      data: page.modules[module].metadata.data
+    })
+    renderToString(app, page.modules[module].metadata.data).then((result) => {
+      // replace plugin in the plugin content
+      let regexPlugin = new RegExp('\\[plugins:' + metadataModule.type + ']', 'g')
+      page.modules[module].content = page.modules[module].content.replace(regexPlugin, result)
+      // remplace module in page content
+      let regexModule = new RegExp('\\[modules:' + module + ']', 'g')
+      page.content = page.content.replace(regexModule, page.modules[module].content)
+      next()
+    }).catch(next)
+  }, (error, result) => {
+    if (error) return reply(Boom.boomify(error))
+    reply.view('themes/' + page.theme + '/index', {page})
   })
-  // the reply
-  reply.view('themes/' + page.theme + '/index', page)
 }
 
 module.exports = handler

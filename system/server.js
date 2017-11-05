@@ -109,17 +109,15 @@ internals.initialize = function () {
       })
       // react views
       internals.server.views({
-        engines: { jsx: require('hapi-react-views') },
-        path: path.resolve(__dirname, '..'),
-        compileOptions: {
-          renderMethod: 'renderToString'
-        }
+        engines: { html: require('./hapi-vuejs-view') },
+        path: path.resolve(__dirname, '..')
       })
       // methods
       internals.server.method({ name: 'getMetadataFromFile', method: require('./methods/getMetadataFromFile'), options: {bind: internals.server} })
       internals.server.method({ name: 'getPages', method: require('./methods/getPages'), options: {bind: internals.server} })
       internals.server.method({ name: 'getPlugins', method: require('./methods/getPlugins'), options: {bind: internals.server} })
-      // route: themes
+      // route: static
+      internals.server.route({ method: 'GET', path: '/modules/{p*}', handler: { directory: { path: path.resolve(__dirname, '../node_modules') } } })
       internals.server.route({ method: 'GET', path: '/themes/{p*}', handler: { directory: { path: path.resolve(__dirname, '../themes') } } })
       internals.server.register([Nova], (error) => {
         if (error) return reject(error)

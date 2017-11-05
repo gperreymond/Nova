@@ -64,22 +64,22 @@ class Pages extends Reflux.Component {
             <AppBar email={this.state.account.email} />
             {this.state.createPageEnable === false &&
               <Group width="100%" height="100%" orientation="vertical" horizontalAlign="center" verticalAlign="top">
-                <Group style={{top: '120px'}} className="content fixed no-border" width="100%" orientation="vertical">
-                  <h3 className="title dark-blue">Bienvenue sur l’espace pages</h3>
-                  <h4 className="title dark-blue">Le contenu c'est la vie !</h4>
+                <Group style={{marginTop: '50px'}} className="content no-border" width="100%" orientation="vertical">
+                  <h3 style={{paddingLeft: '80px'}} className="title dark-blue">Bienvenue sur l’espace pages</h3>
+                  <h4 style={{paddingLeft: '80px'}} className="title dark-blue">Le contenu c'est la vie !</h4>
                   <hr />
                   { this.state.collection.count > 0 && <p>Il y a actuellement {this.state.collection.count} pages de disponibles pour le site.</p> }
                   <hr />
                   { this.state.collection.count > 0 && <DataGroup className="content no-border no-padding tile" width="100%" height="100%" orientation="horizontal" verticalAlign="top" dataProvider={this.state.collection.dataProvider} itemRenderer={PageCardListRenderer} /> }
-                  <Button onClick={this.openCreatePage} style={{position: 'absolute', right: '20px'}} className="button icon circle orange" icon="plus" />
+                  <Button onClick={this.openCreatePage} style={{position: 'absolute'}} className="button icon circle orange" icon="plus" />
                 </Group>
               </Group>
             }
             {this.state.createPageEnable === true &&
               <Group width="100%" height="100%" orientation="vertical" horizontalAlign="center" verticalAlign="top">
-                <Group style={{top: '120px'}} className="content fixed no-border" width="100%" orientation="vertical">
-                  <h3 className="title dark-blue">Création d'une page</h3>
-                  <h4 className="title dark-blue">Le contenu c'est la vie !</h4>
+                <Group style={{marginTop: '50px'}} className="content no-border" width="100%" orientation="vertical">
+                  <h3 style={{paddingLeft: '80px'}} className="title dark-blue">Création d'une page</h3>
+                  <h4 style={{paddingLeft: '80px'}} className="title dark-blue">Le contenu c'est la vie !</h4>
                   <hr />
                   <div className="content" style={{marginTop: '20px'}}>
                     <div className="form-field">
@@ -98,7 +98,7 @@ class Pages extends Reflux.Component {
                       <Button className="button large orange" label="Sauver" onClick={(e) => Actions.createPage(this.state.page)} />
                     </Group>
                   </div>
-                  <Button onClick={this.closeCreatePage} style={{position: 'absolute', right: '20px'}} className="button icon circle dark-red" icon="close" />
+                  <Button onClick={this.closeCreatePage} style={{position: 'absolute'}} className="button icon circle dark-red" icon="close" />
                 </Group>
               </Group>
             }

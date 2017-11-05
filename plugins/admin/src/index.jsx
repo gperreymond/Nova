@@ -9,7 +9,7 @@ import Application from './Application'
 
 import Debug from 'debug'
 const debug = Debug('nova:admin:Application')
-if (process.env.DEBUG === true) window.localStorage.debug = 'nova:admin:*'
+if (process.env.DEBUG === true) window.localStorage.debug = 'nova:youtube:*'
 
 debug('render application')
 render(<Application />, document.getElementById('root'))
