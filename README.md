@@ -1,10 +1,9 @@
 # Nova
 
-Nova is a modern flat file CMS / Surveys in javascript.
+Nova is a modern flat file CMS in javascript.
 
-- articles
-- surveys
+* articles
 
-[![CircleCI](https://circleci.com/gh/gperreymond/Nova.svg?style=shield)](https://circleci.com/gh/gperreymond/Nova)
-[![CodeFactor](https://www.codefactor.io/repository/github/gperreymond/nova/badge)](https://www.codefactor.io/repository/github/gperreymond/nova)
-[![Coverage Status](https://coveralls.io/repos/github/gperreymond/Nova/badge.svg?branch=master)](https://coveralls.io/github/gperreymond/Nova?branch=master)
+[![CircleCI](https://circleci.com/gh/gperreymond/vue-nova-cms.svg?style=shield)](https://circleci.com/gh/gperreymond/vue-nova-cms)
+[![Coverage Status](https://coveralls.io/repos/github/gperreymond/nova-cms-react/badge.svg)](https://coveralls.io/github/gperreymond/nova-cms-react)
+[![CodeFactor](https://www.codefactor.io/repository/github/gperreymond/vue-nova-cms/badge)](https://www.codefactor.io/repository/github/gperreymond/vue-nova-cms)
